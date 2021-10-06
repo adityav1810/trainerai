@@ -22,12 +22,21 @@ def generate_frames():
 
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+@app.route('/home')
+def home():
+    return render_template('home.html')
+@app.route('/bicep_curls')
+def bicep_curls():
+    return render_template('bicep_curls.html')
+@app.route('/pushups')
+def pushups():
+    return render_template('pushups.html')    
 
 @app.route('/video')
 def video():
     return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
-
+@app.route('/workout_loader')
+def workout_loader():
+    return render_template('workout_loader.html')
 if __name__=="__main__":
     app.run(debug=True)
