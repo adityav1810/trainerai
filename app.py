@@ -39,4 +39,4 @@ def video():
 def workout_loader():
     return render_template('workout_loader.html')
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run()
