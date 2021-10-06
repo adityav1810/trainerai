@@ -38,3 +38,5 @@ def video():
 @app.route('/workout_loader')
 def workout_loader():
     return render_template('workout_loader.html')
+if __name__ == "__main__":
+        app.run()
