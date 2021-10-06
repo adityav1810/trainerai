@@ -3,7 +3,7 @@ import cv2
 import os
 app=Flask(__name__)
 
-
+app.secret_key = 'this_is_a_secret_key'
 def generate_frames():
     camera=cv2.VideoCapture(0)
     while True:
