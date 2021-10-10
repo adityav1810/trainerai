@@ -15,7 +15,8 @@
     <img src="{{ url_for('video') }}">
     <a href="{{ url_for('workout_loader') }}">GO BACK</a>
     <p id="status">Loading Tensorflow.Js</p>
-    <script type="text/javascript" src="url_for('static',filename='webstream.js')}}">
+    <script type="text/javascript" src="url_for('static',filename='js/webstream.js')}}"></script>
+    <script>
      const status = document.getElementById('status');
 status.innerText = 'Loaded TensorFlow.js - version: ' + tf.version.tfjs;
 
