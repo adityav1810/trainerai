@@ -4,7 +4,7 @@
     </head>
     <body>
         <video id="video" width="480" height="320" autoplay playsinline></video>
-        <canvas id="canvas"></canvas>
+        <canvas id="canvas">CANVAS</canvas>
 
 
         
@@ -61,13 +61,7 @@ async function loadAndBlur() {
 
 const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
 const poses = await detector.estimatePoses(videoElement);
-  
-
-  const backgroundBlurAmount = 9;
-  const edgeBlurAmount = 3;
-  const flipHorizontal = false;
-
-  bodyPix.drawBokehEffect(canvas, videoElement, poses);
+console.log(poses[0].keypoints);
 }
 loadAndBlur();
 </script>
