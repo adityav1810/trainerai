@@ -1,27 +1,58 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
 
-    </head>
-    <body>
-        <video id="video" width="480" height="320" autoplay playsinline></video>
-        <canvas id="canvas">CANVAS</canvas>
+<head>
+    <meta charset="UTF-8" />
+    <title>WEBCAM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background: #f2f4f6;
+  overflow: hidden;
+}
+.webcam-start-stop {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 5px 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.webcam-start-stop > a {
+  text-decoration: unset;
+  color: #000;
+  background: #fff;
+  padding: 10px 20px;
+}
+    </style>
+</head>
 
+<body>
+    <div class="webcam">
+        <div class="video-outer">
+            <video id="video" height="100%" width="50%" autoplay></video>
+        </div>
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Require the peer dependencies of pose-detection. -->
+        <div class="webcam-start-stop">
+            <a href="#!" class="btn-start" onclick="start()">Start</a>
+            <a href="#!" class="btn-stop" onclick="StopWebCam()">Stop</a>
+        </div>
+    </div>
+<!-- Require the peer dependencies of pose-detection. -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
 
@@ -31,39 +62,56 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
 
- <!-- Import TensorFlow.js -->
- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
- <!-- Import tfjs-vis -->
- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis@1.0.2/dist/tfjs-vis.umd.min.js"></script>
+    <script>
+        var StopWebCam = function () {
+            var stream = video.srcObject;
+            var tracks = stream.getTracks();
+
+            for (var i = 0; i < tracks.length; i++) {
+                var track = tracks[i];
+                track.stop();
+            }
+            video.srcObject = null;
+        }
 
 
- <script src="{{url_for('static',filename='js/webstream.js')}}"></script>
 
-<script>
-    const videoElement = document.getElementById('video');
+        const runMovenet= async()=>{
+    const detectorConfig = {modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING};
+const net = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
+    setInterval(()=>{
+        detect(net);
 
-navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-    .then(stream => {
-      videoElement.srcObject = stream;
-      videoElement.play();
-    })
-    .catch(err => {
-      alert(`Following error occured: ${err}`);
-    });
-    const canvas = document.getElementById('canvas');
-
-async function loadAndBlur() {
-    const detectorConfig = {
-  modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING,
-  enableTracking: true,
-  trackerType: poseDetection.TrackerType.BoundingBox
+    },100)
 };
+const detect = async(net)=>{
+    const pose = await net.estimatePoses(video);
+    console.log(pose[0].keypoints);
 
-const detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, detectorConfig);
-const poses = await detector.estimatePoses(videoElement);
-console.log(poses[0].keypoints);
+
 }
-loadAndBlur();
-</script>
-    </body>
+
+
+        var start = function () {
+            var video = document.getElementById("video"),
+                vendorURL = window.URL || window.webkitURL;
+ 
+
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                        video.srcObject = stream;
+
+                       
+                    }).catch(function (error) {
+                        console.log("Something went wrong");
+                    });
+            }
+            runMovenet(video);
+            
+        }
+        $(function () { start(); });
+    </script>
+</body>
+
 </html>
