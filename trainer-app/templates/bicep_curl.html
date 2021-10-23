@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Trainer.ai</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQI12P4//8/AAX+Av7czFnnAAAAAElFTkSuQmCC">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bicep_curl.css') }}" />
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}" /></noscript>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body class="is-preload">
+
+    <!-- Sidebar -->
+        <section id="sidebar">
+            <div class="inner">
+                <nav>
+                    <ul>
+                        <li><a href="{{url_for('workout_loader')}}">Go Back</a></li>
+
+                </nav>
+            </div>
+        </section>
+
+        <div id="wrapper">
+            <div class="webcam">
+                <div class="video-outer">
+                    <video id="video" height="100%" width="50%" autoplay></video>
+                </div>
+        
+                <!-- <div class="webcam-start-stop"> -->
+                    <div>
+                    <a href="#!" class="button-primary" onclick="start()">Start</a>
+                    <a href="#!" class="button-primary" onclick="StopWebCam()">Stop</a>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+
+    
+<!-- Require the peer dependencies of pose-detection. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+
+<!-- You must explicitly require a TF.js backend if you're not using the TF.js union bundle. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl"></script>
+<!-- Alternatively you can use the WASM backend: <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
+<script src="{{url_for('static',filename='js/poseEstimation.js')}}"></script>
+
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/browser.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+</body>
+
+</html>

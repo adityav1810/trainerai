@@ -25,24 +25,20 @@ def generate_frames():
 @app.route('/home')
 def home():
     return render_template('home.html')
-@app.route('/bicep_curls')
-def bicep_curls():
-    return render_template('bicep_curls.html')
+
 @app.route('/pushups')
 def pushups():
     return render_template('pushups.html')    
 
-@app.route('/video')
-def video():
-    return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
+
 @app.route('/workout_loader')
 def workout_loader():
     return render_template('workout_loader.html')
 
 
-@app.route('/clientside')
-def clientside():
-    return render_template('client_video_stream.html')
+@app.route('/bicep_curl')
+def bicep_curl():
+    return render_template('bicep_curl.html')
 if __name__ == "__main__":
     app.debug = True
     port = int(os.environ.get("PORT", 5000))
