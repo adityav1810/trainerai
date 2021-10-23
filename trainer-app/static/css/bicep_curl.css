@@ -6,6 +6,20 @@ box-sizing: border-box;
 font-family: 'Oswald', sans-serif;
 }
 
+
+.video-outer{
+    position: absolute; 
+    right: 0; 
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto; 
+    height: auto; 
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden;
+}
+
 .webcam-start-stop {
 position: fixed;
 left: 0;
