@@ -4,22 +4,6 @@ import os
 app=Flask(__name__)
 
 app.secret_key = 'this_is_a_secret_key'
-def generate_frames():
-    camera=cv2.VideoCapture(0)
-    while True:
-
-            
-        ## read the camera frame
-        success,frame=camera.read()
-        if not success:
-            break
-        else:
-            ret,buffer=cv2.imencode('.jpg',frame)
-            frame=buffer.tobytes()
-
-        yield(b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
 
 @app.route('/')
 @app.route('/home')

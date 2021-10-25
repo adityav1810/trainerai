@@ -6,8 +6,63 @@ box-sizing: border-box;
 font-family: 'Oswald', sans-serif;
 }
 
+.webcam{
+    height:90vh;
+    /* width:100%; */ 
+    display: flex;
+    background-color:yellow;
+    justify-content: center;
+    align-items: center;
+    
 
-.video-outer{
+}
+#canvas{
+    height: 500px !important;
+    width: 500px !important ;
+
+
+}
+
+#div-button{
+    display: flex;
+    height: 10vh;
+    background-color:red;
+    justify-content: center;
+    
+
+}
+
+#canvas{
+    position: absolute;
+    border: 1px solid #fff;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .video-outer{
     position: absolute; 
     right: 0; 
     bottom: 0;
@@ -36,4 +91,5 @@ text-decoration: unset;
 color: #000;
 background: #fff;
 padding: 10px 20px;
-}
+} */
+
