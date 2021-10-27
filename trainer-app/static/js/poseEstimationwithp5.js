@@ -38,6 +38,7 @@ async function setup() {
   video = createCapture(VIDEO, videoReady);
   video.size(wv/f,hv/f); //resize the input
   video.hide();
+  video.elt.setAttribute('playsinline', '');
   await init();
   
 }
