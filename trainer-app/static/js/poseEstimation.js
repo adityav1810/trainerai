@@ -11,6 +11,8 @@ const detect = async (net) => {
 function drawonCanvas(keypoints){
   var canvas=document.getElementById('canvas');
   var ctx = canvas.getContext('2d')
+
+
  
   
 
@@ -25,11 +27,10 @@ function drawonCanvas(keypoints){
     var scoreThreshold=0.2;
 
     if (score >= scoreThreshold && jointname =='nose') {
-      const circle = new Path2D();
-      circle.arc(item.x, item.y, 5, 0, 2 * Math.PI);
+      ctx.ellipse(item.x,item.y,50,50,0,0,2*Math.PI);
+      ctx.stroke();
       
-      ctx.fill(circle);
-      ctx.stroke(circle);
+
       console.log(item.name);
     }
 

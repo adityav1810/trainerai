@@ -32,7 +32,7 @@
     </section>
     <!-- MAIN DIV -->
     <div id="wrapper">
-        <div id='div-button'>
+        <!-- <div id='div-button'>
             <a href="#!" class="button primary" onclick="start()">Start</a>
             <a href="#!" class="button primary" onclick="StopWebCam()">Stop</a>
         </div>
@@ -41,7 +41,8 @@
         <div class="webcam">
  
             <video id="video" height ="500px" width ="500px" autoplay></video>
-            <canvas id = "canvas" ></canvas>
+            <canvas id = "canvas" ></canvas> -->
+            <div id='videostream'></div>
 
 
             
@@ -68,7 +69,8 @@
     <!-- Alternatively you can use the WASM backend: <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
-    <script src="{{url_for('static',filename='js/poseEstimation.js')}}"></script>
+    <!-- <script src="{{url_for('static',filename='js/poseEstimation.js')}}"></script> -->
+    <script src="{{url_for('static',filename='js/poseEstimationwithp5.js')}}"></script>
 
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
@@ -77,6 +79,8 @@
     <script src="{{ url_for('static', filename='js/breakpoints.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/util.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 
 
 </body>
