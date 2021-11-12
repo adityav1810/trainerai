@@ -42,7 +42,9 @@
  
             <video id="video" height ="500px" width ="500px" autoplay></video>
             <canvas id = "canvas" ></canvas> -->
-            <div id='videostream'></div>
+            <div id='videoStream'></div>
+            <div id="chartContainer" style="height: 370px; width:100%;"></div>
+
 
 
             
@@ -71,6 +73,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection"></script>
     <!-- <script src="{{url_for('static',filename='js/poseEstimation.js')}}"></script> -->
     <script src="{{url_for('static',filename='js/poseEstimationwithp5.js')}}"></script>
+    
 
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
