@@ -9,9 +9,9 @@ let total_reps;
 root = document.documentElement;
 // let vw, vh;
 // var master_width=1900;
-var master_width=screen.width+500;
+var master_width=screen.width;
 // var master_height=930;
-var master_height=screen.height+100;
+var master_height=screen.height;
 async function init() {
 	console.log("initializing");
 	const detectorConfig = {
