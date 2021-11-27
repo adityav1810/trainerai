@@ -31,6 +31,9 @@ async function videoReady() {
 function getrepitioncount() {
 	 total_reps = prompt('Enter Total Repitions','10');
   }
+
+
+
 async function setup() {
 	getrepitioncount();
 
@@ -296,7 +299,7 @@ function draw() {
 		first = false;
 	}
 	background(220);
-	if (video ) {
+	if (video  ) {
 		let vw, vh;
 		// This isn't valid during setup() for some reason
 	//   videoAspect = video.width / video.height;
@@ -322,13 +325,10 @@ function draw() {
 	  rightLegpoints=['rightLeg',12,14,16]
 	  leftLegpoints=['leftLeg',11,13,15]
 	 checkArm(rightLegpoints);
-     if (curlCounter>total_reps){
-         window.alert("Workout complete");
-         
-
      }
 
 				}
+			
 
 	}
 	
