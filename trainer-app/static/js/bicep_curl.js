@@ -45,6 +45,7 @@ async function setup() {
 
   video = createCapture(VIDEO, videoReady);
   // video.resize(windowWidth,windowHeight);
+  video.elt.setAttribute('playsinline', '');
   videoAspect = video.width / video.height;
   video.hide();
 
