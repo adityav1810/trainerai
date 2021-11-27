@@ -10,9 +10,9 @@ app.secret_key = 'this_is_a_secret_key'
 def home():
     return render_template('home.html')
 
-@app.route('/pushups')
-def pushups():
-    return render_template('pushups.html')    
+@app.route('/squats')
+def squats():
+    return render_template('squats.html')    
 
 
 @app.route('/workout_loader')
