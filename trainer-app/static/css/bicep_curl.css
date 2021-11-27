@@ -1,114 +1,114 @@
 
-* {
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-font-family: 'Oswald', sans-serif;
-}
 
-
-
-
-
-
-.backbuttoncol{display: flex;}
-.container1{
-    background-color: purple;
-    /* padding: 10px; */
-    display: flex; 
-    justify-content: space-evenly;
-}
-.col1{
-    width: 85%;
-}
-.col2{
-    width:15%;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-
-
-
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
-    font-family: arial;
-  }
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: #5e42a6;
   
-  .price {
-    color: grey;
-    font-size: 22px;
-  }
-  
-  .card button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  
-  .card button:hover {
-    opacity: 0.7;
-  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .video-outer{
-    position: absolute; 
-    right: 0; 
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-    width: auto; 
-    height: auto; 
-    z-index: -100;
-    background-size: cover;
-    overflow: hidden;
+  min-height: 100vh;
 }
 
-.webcam-start-stop {
-position: fixed;
-left: 0;
-bottom: 0;
-right: 0;
-padding: 5px 0;
-background: #000;
-display: flex;
-align-items: center;
-justify-content: space-around;
-}
-.webcam-start-stop > a {
-text-decoration: unset;
-color: #000;
-background: #fff;
-padding: 10px 20px;
-} */
+.buttonclass{
+ font-size: 50px;
+ padding: 5px;
+ background: transparent;
+ color: black;
 
+ /* border-radius: 10px; */
+ border: none;
+ border-bottom:1px solid black;
+ 
+}
+.buttonclass:hover, .buttonclass:active, .buttonclass:focus{
+border: none;
+}
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 6px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 0;
+}
+
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 6px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+
+
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}

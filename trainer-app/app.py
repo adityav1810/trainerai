@@ -23,6 +23,9 @@ def workout_loader():
 @app.route('/bicep_curl')
 def bicep_curl():
     return render_template('bicep_curl.html')
+
+
+    
 if __name__ == "__main__":
     app.debug = True
     port = int(os.environ.get("PORT", 5000))

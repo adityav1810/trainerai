@@ -6,6 +6,7 @@ let video;
 let screenAspect;
 let videoAspect;
 let total_reps;
+
 root = document.documentElement;
 // let vw, vh;
 // var master_width=1900;
@@ -28,7 +29,7 @@ async function videoReady() {
 	await getPoses();
 }
 function getrepitioncount() {
-	 total_reps = prompt('enter total repitions','10');
+	 total_reps = prompt('Enter Total Repitions','10');
   }
 async function setup() {
 	getrepitioncount();
@@ -207,24 +208,32 @@ function toDegrees(radians) {
 
 var curlCounter=0;
 var dir=0;
-
-
 function checkArm(arm){
-  var curlThreshold=30;
+  
 
 
 
- Hip=getKeypointForEdgeVertex(poses[0].keypoints,arm[1]);
- Knee=getKeypointForEdgeVertex(poses[0].keypoints,arm[2]);
- Ankle=getKeypointForEdgeVertex(poses[0].keypoints,arm[3]);
-	if (Hip && Knee && Ankle ){	  
-    KneeAngle=toDegrees(angle(Hip,Knee,Ankle));
+ Shoulder=getKeypointForEdgeVertex(poses[0].keypoints,arm[1]);
+ Elbow=getKeypointForEdgeVertex(poses[0].keypoints,arm[2]);
+ Hand=getKeypointForEdgeVertex(poses[0].keypoints,arm[3]);
+	if (Shoulder && Elbow && Hand ){	  
+    ShoulderAngle=toDegrees(angle(Shoulder,Elbow,Hand));
+	scaledAngle=Math.trunc((ShoulderAngle/180)*100);
 
-	scaledAngle=Math.trunc((KneeAngle/180)*100);
-	root.style.setProperty('--change', 2*(100-scaledAngle) + "deg");
-	document.getElementById('jointAnglevalue').innerHTML=scaledAngle;
 
-	if (scaledAngle>=90){
+
+
+// console.log(dataID);
+
+
+
+
+
+	var angleprogressbar=document.getElementById('jointAngleprogressbar');
+	console.log(angleprogressbar.getAttribute('data-value'));
+	angleprogressbar.setAttribute('data-value',scaledAngle)
+	document.getElementById('jointAnglevalue').innerHTML=100-scaledAngle;
+	if (scaledAngle>=95){
 		if(dir==0){
 			curlCounter =curlCounter +0.5;
 			dir=1;
@@ -238,29 +247,76 @@ function checkArm(arm){
 	}
 	//curlcounter display here
 	console.log(curlCounter);
-	document.getElementById('progressbar').innerHTML=Math.trunc(curlCounter);
-    document.getElementById('jointcheck').innerHTML="OK";
-	document.getElementById("progressbar").style.width=(100*(Math.trunc(curlCounter)/total_reps))+"%";
+	document.getElementById('repcount').innerHTML=Math.trunc(curlCounter);
+	document.getElementById('posecheck').innerHTML='OK';
+
+
+	// document.getElementById("progressbar").style.width=(100*(Math.trunc(curlCounter)/total_reps))+"%";
   }
   else{
-    document.getElementById('jointcheck').innerHTML="Cannot see your legs";
+	document.getElementById('posecheck').innerHTML='Not Visible';
   }
 
 }
 
+
+
 function draw() {
+
+	$(".progress").each(function() {
+  
+		var value = $(this).attr('data-value');
+		var left = $(this).find('.progress-left .progress-bar');
+		var right = $(this).find('.progress-right .progress-bar');
+	
+		if (value > 0) {
+		  if (value <= 50) {
+			right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+			left.css('transform', 'rotate(' + percentageToDegrees(0) + 'deg)')
+
+		  } else {
+			right.css('transform', 'rotate(180deg)')
+			left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+		  }
+		}
+	
+	  })
+
+	  function percentageToDegrees(percentage) {
+	
+		return percentage / 100 * 360
+	
+	  }
+
+
+
+
 	if (first) {
 		console.log("drawing");
 		first = false;
 	}
 	background(220);
-	if (video && total_reps>=curlCounter) {
+	if (video ) {
+		let vw, vh;
+		// This isn't valid during setup() for some reason
+	//   videoAspect = video.width / video.height;
+	videoAspect==screenAspect;
+		if (screenAspect >= videoAspect) {
+			// The screen is wider than the video
+			vh = height;
+			vw = height * videoAspect;
+		} else {
+			// The video is wider than the screen
+			vw = width;
+			vh = width / videoAspect;
+		}
 		push();
 		// Mirror the video
 		scale(-1, 1);
 		translate(-master_width, 0);
 		image(video, 0, 0, master_width,master_height);
 		pop();
+
 		if (poses && poses.length > 0) {
 		      drawKeypoints(master_width,master_height);
 	  rightLegpoints=['rightLeg',12,14,16]
