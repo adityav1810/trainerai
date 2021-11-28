@@ -5,6 +5,14 @@ app=Flask(__name__)
 
 app.secret_key = 'this_is_a_secret_key'
 
+@app.route("/bicepcurl_js")
+def bicepcurl_js():
+    return render_template("/js/bicep_curl.js")
+@app.route("/squats_js")
+def squats_js():
+    return render_template("/js/squats.js")
+
+
 @app.route('/')
 @app.route('/home')
 def home():
