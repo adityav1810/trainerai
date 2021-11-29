@@ -1,3 +1,3 @@
-# trainerai
+# captsone project code
 
-Source Code for Trainer.ai
+Source Code for 7th Sem Capstone Project
